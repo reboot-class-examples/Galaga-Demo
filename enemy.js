@@ -15,7 +15,12 @@ function Enemy(x, y, parent, player, array){
     parent.appendChild(this.sprite)
   }
 
-  this.removeEnemy = function() {
+  this.removeEnemy = function(idx) {
+    if (this.y >= 750) {
+      array.shift
+    } else {
+      array.splice(idx, 1)
+    }
     parent.removeChild(this.sprite)
     clearInterval(this.timerId)
   }
@@ -30,7 +35,6 @@ function Enemy(x, y, parent, player, array){
 
     if (self.y >= 750) {
       self.removeEnemy()
-      array.shift()
     }
   }
 

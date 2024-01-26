@@ -6,7 +6,7 @@ function Bullet(x, y, parent, array){
   this.height = 20
   this.sprite = document.createElement('div')
   this.direction = -1
-  this.speed = 5
+  this.speed = 10
 
   this.insertBullet = function () {
     this.sprite.setAttribute('class', 'bullet')
@@ -34,14 +34,17 @@ function Bullet(x, y, parent, array){
   }
 
   this.checkCollision = function() {
-    if ( 
-          this.x < player.x + player.width &&
-          this.y < player.y + player.height &&
-          this.x + this.width > player.x &&
-          this.y+ this.height > player.y
-        ) {
-          player.isDead = true
-        }
+    array.forEach(function(enemy, index){
+      if ( 
+            self.x < enemy.x + enemy.width &&
+            self.y < enemy.y + enemy.height &&
+            self.x + self.width > enemy.x &&
+            self.y+ self.height > enemy.y
+          ) {
+            self.removeBullet()
+            enemy.removeEnemy(index)
+          }
+    })
   }
 
   this.timerId = setInterval(this.move, 50)
