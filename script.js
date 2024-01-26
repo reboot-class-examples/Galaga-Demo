@@ -11,7 +11,7 @@ function gameStart() {
 }
 
 function createEnemy() {
-  var enemy = new Enemy(275, 0, board)
+  var enemy = new Enemy(275, 0, board, player)
   enemy.insertEnemy()
 }
 
