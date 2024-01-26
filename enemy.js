@@ -1,4 +1,4 @@
-function Enemy(x, y, parent, player){
+function Enemy(x, y, parent, player, array){
   var self = this
   this.x = x
   this.y = y
@@ -30,6 +30,7 @@ function Enemy(x, y, parent, player){
 
     if (self.y >= 750) {
       self.removeEnemy()
+      array.shift()
     }
   }
 

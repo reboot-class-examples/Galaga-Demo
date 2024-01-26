@@ -2,7 +2,7 @@ import { Player } from './player.js'
 import { Enemy } from './enemy.js'
 
 var board = document.querySelector('#board')
-var player = new Player(275, 750, board)
+var player = new Player(220, 750, board)
 var playerId = null
 var spawnId = null
 var enemies = []
@@ -14,7 +14,8 @@ function gameStart() {
 }
 
 function createEnemy() {
-  var enemy = new Enemy(275, 0, board, player)
+  var coord = Math.floor(Math.random() * 10) * 50
+  var enemy = new Enemy(coord, 0, board, player, enemies)
   enemy.insertEnemy()
   enemies.push(enemy)
 }
