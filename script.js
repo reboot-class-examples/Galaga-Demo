@@ -3,7 +3,6 @@ import { Player } from './player.js'
 var board = document.querySelector('#board')
 var player = new Player(275, 750)
 
-
 function gameLoop() {
   var playerId = setInterval(player.move, 50)
 }
