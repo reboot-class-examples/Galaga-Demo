@@ -5,7 +5,7 @@ function Bullet(x, y, parent, array){
   this.width = 20
   this.height = 20
   this.sprite = document.createElement('div')
-  this.direction = -1
+  this.direction = -1 // Movemos la bala hacia arriba
   this.speed = 10
 
   this.insertBullet = function () {
@@ -22,14 +22,14 @@ function Bullet(x, y, parent, array){
 
   this.move = function () {
     self.checkCollision()
-    var newY = self.y + self.speed * self.direction
+    var newY = self.y + self.speed * self.direction 
     if (newY >= 0 && newY <= 750) {
       self.y = newY
       self.sprite.style.top = self.y + 'px'
     }
 
     if (self.y <= 0) {
-      self.removeBullet()
+      self.removeBullet() // Quitamos la bala de la pantalla si ha llegado al borde superior del escenario
     }
   }
 
@@ -41,7 +41,7 @@ function Bullet(x, y, parent, array){
             self.x + self.width > enemy.x &&
             self.y+ self.height > enemy.y
           ) {
-            self.removeBullet()
+            self.removeBullet() // En caso de colisionar con un enemigo, quitamos tanto la bala como el enemigo de la pantalla
             enemy.removeEnemy(index)
           }
     })

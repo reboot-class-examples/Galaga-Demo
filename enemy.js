@@ -17,24 +17,24 @@ function Enemy(x, y, parent, player, array){
 
   this.removeEnemy = function(idx) {
     if (this.y >= 750) {
-      array.shift
+      array.shift() // El enemigo que ha llegado al borde inferior es el que más tiempo lleva en pantalla, por lo que es el primer elemento del array de enemigos. Lo quitamos con la función shift()
     } else {
-      array.splice(idx, 1)
+      array.splice(idx, 1) // Si no ha llegado al borde inferior, eliminamos el elemento en el índice que hemos recibido desde la función 'checkCollision' de la bala que ha colisionado con este enemigo
     }
     parent.removeChild(this.sprite)
     clearInterval(this.timerId)
   }
 
   this.move = function () {
-    self.checkCollision()
-    var newY = self.y + self.speed * self.direction
+    self.checkCollision() // Primero comprobamos si hemos colisionado con el jugador
+    var newY = self.y + self.speed * self.direction // Movemos el enemigo hacia abajo
     if (newY >= 0 && newY <= 750) {
       self.y = newY
       self.sprite.style.top = self.y + 'px'
     }
 
     if (self.y >= 750) {
-      self.removeEnemy()
+      self.removeEnemy() // Quitamos al enemigo de la pantalla si llega al borde inferior
     }
   }
 
@@ -45,11 +45,11 @@ function Enemy(x, y, parent, player, array){
           this.x + this.width > player.x &&
           this.y+ this.height > player.y
         ) {
-          player.isDead = true
+          player.isDead = true // Matamos al jugador en caso de haber colisionado con él
         }
   }
 
-  this.timerId = setInterval(this.move, 50)
+  this.timerId = setInterval(this.move, 50) // Nada más crear el enemigo, creamos un intervalo que se encargará de su movimiento
 }
 
 export { Enemy }
