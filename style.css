@@ -19,3 +19,10 @@
   background-color: red;
   position: absolute;
 }
+
+.bullet {
+  width: 20px;
+  height: 20px;
+  background-color: yellow;
+  position: absolute;
+}

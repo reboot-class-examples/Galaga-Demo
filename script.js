@@ -1,5 +1,6 @@
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
+import { Bullet } from './bullet.js'
 
 var board = document.querySelector('#board')
 var player = new Player(220, 750, board)
@@ -40,6 +41,10 @@ window.addEventListener('keydown', function(e) {
       break
     case 'd':
       player.direction = 1
+      break
+    case ' ':
+      var bullet = new Bullet(player.x + player.width/2 - 10, player.y - 20, board, enemies)
+      bullet.insertBullet()
       break
   }
 })
