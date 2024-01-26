@@ -1,9 +1,10 @@
 import { Player } from './player.js'
 
 var board = document.querySelector('#board')
-var player = new Player(275, 750)
+var player = new Player(275, 750, board)
 
-function gameLoop() {
+function gameStart() {
+  player.insertPlayer()
   var playerId = setInterval(player.move, 50)
 }
 
@@ -22,4 +23,4 @@ window.addEventListener('keyup', function() {
   player.direction = 0
 })
 
-gameLoop()
+gameStart()
