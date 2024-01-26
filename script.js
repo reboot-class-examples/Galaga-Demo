@@ -1,28 +1,26 @@
+import { Player } from './player.js'
+
 var board = document.querySelector('#board')
-
-
-function Player(x, y){
-  this.x = x
-  this.y = y
-  this.sprite = document.querySelector('#player')
-
-  this.move = function (direction) {
-    this.x += 10 * direction
-    this.sprite.style.left = this.x + 'px'
-  }
-}
-
 var player = new Player(275, 750)
 
 
+function gameLoop() {
+  var playerId = setInterval(player.move, 50)
+}
 
 window.addEventListener('keydown', function(e) {
   switch(e.key) {
     case 'a':
-      player.move(-1)
+      player.direction = -1
       break
     case 'd':
-      player.move(1)
+      player.direction = 1
       break
   }
 })
+
+window.addEventListener('keyup', function() {
+  player.direction = 0
+})
+
+gameLoop()
