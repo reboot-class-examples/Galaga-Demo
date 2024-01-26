@@ -34,13 +34,14 @@ function Enemy(x, y, parent, player){
   }
 
   this.checkCollision = function() {
-    if ( this.x < player.x + player.width &&
-        this.y < player.y + player.height &&
-        this.x + this.width > player.x &&
-        this.y+ this.height > player.y) 
-      {
-    window.alert('Game Over')
-  }
+    if ( 
+          this.x < player.x + player.width &&
+          this.y < player.y + player.height &&
+          this.x + this.width > player.x &&
+          this.y+ this.height > player.y
+        ) {
+          player.isDead = true
+        }
   }
 
   this.timerId = setInterval(this.move, 50)

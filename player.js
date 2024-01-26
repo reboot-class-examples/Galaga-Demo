@@ -7,6 +7,7 @@ function Player(x, y, parent){
   this.sprite = document.createElement('div')
   this.direction = 0
   this.speed = 5
+  this.isDead = false
 
   this.insertPlayer = function () {
     this.sprite.setAttribute('id', 'player')
