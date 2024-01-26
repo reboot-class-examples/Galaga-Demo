@@ -1,13 +1,28 @@
 var board = document.querySelector('#board')
-var player = document.querySelector('#player')
+
+
+function Player(x, y){
+  this.x = x
+  this.y = y
+  this.sprite = document.querySelector('#player')
+
+  this.move = function (direction) {
+    this.x += 10 * direction
+    this.sprite.style.left = this.x + 'px'
+  }
+}
+
+var player = new Player(275, 750)
+
+
 
 window.addEventListener('keydown', function(e) {
   switch(e.key) {
     case 'a':
-      console.log('izq')
+      player.move(-1)
       break
     case 'd':
-      console.log('der')
+      player.move(1)
       break
   }
 })
